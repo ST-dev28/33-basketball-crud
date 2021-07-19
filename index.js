@@ -40,7 +40,7 @@ game.buyPlayer(2, 8);
 
 game.buyPlayer(2, 10);
 // "Monstars" team just acquired new player Arachnneka for 195 cash/year!
-/*
+
 game.teamValue(1);
 // "Goon Squad" team is paying 525 cash/year for it's players.
 

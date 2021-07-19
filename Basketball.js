@@ -4,6 +4,7 @@ class Basketball {
         this.playersList = [];
         this.teamsList = [];
         this.score = 0;
+        this.teamPlayersValue = 0;
     }
 
     wannaBePlayer(player, playerPrice, playerId) {
@@ -18,30 +19,34 @@ class Basketball {
     createTeam(team, playersCount) {
         this.teamsList.push({
             name: team,
+            list: [],
             //count: playersCount,
         });
         console.log(`A "${team}" just entered a game!`);
     }
 
     buyPlayer(teamId, playerId) {
-        //console.log(teamId, playerId);
+        //console.log(teamId, plyerId);
+        this.teamsList[teamId-1].list.push(playerId);
         console.log(`"${this.teamsList[teamId - 1].name}" team just acquired new player ${this.playersList[playerId - 1].name} for ${this.playersList[playerId - 1].price} cash/year!`);
+        //this.teamPlayersValue += this.playersList[playerId - 1].price;
+        //console.log(this.teamPlayersValue);
     }
 
-    teamValue(teamId, notification = true) {
-        /*let totalValue = 0;
-        const players = this.buyPlayer(teamId, false);
-
-        for (const one of players.player) {
-            const one = this.playersList[player.id - 1];
-            totalValue += one.price;
+    teamValue(Id) {
+        let totalValue = 0;
+        //console.log(this.teamsList[Id-1]);
+        for (const playerID of this.teamsList[Id-1].list) {
+            totalValue += this.playersList[playerID-1].price;
+            //console.log(playerID);
+            //console.log(totalValue);
+            //console.log(`${this.teamsList[teamId - 1].name} team is paying ${this.teamPlayersValue} cash/year for it's players.`);
         }
 
-        if (notification) {
-            console.log(`${team} team is paying ${this.totalValue} cash/year for it's players.`);
+            console.log(`${this.teamsList[Id - 1].name} team is paying ${totalValue} cash/year for it's players.`);
         }
-        return totalValue;*/
-    }
+
+
 
     letsPlay() {
 
