@@ -46,7 +46,7 @@ game.teamValue(1);
 
 game.teamValue(2);
 // "Monstars" team is paying 430 cash/year for it's players.
-/*
+
 game.buyPlayer(2, 8);
 // "Monstars" team can't add the same player twice!
 
@@ -61,7 +61,7 @@ game.score(77, 76);
 
 game.letsPlay(2, 1);
 // New game everybody!\n"Monstars" vs. "Goon Squad"
-
+/*
 game.score(80, 69);
 // "Monstars" wins!
 

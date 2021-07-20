@@ -3,34 +3,43 @@ class Basketball {
         this.teamName = teamName;
         this.playersList = [];
         this.teamsList = [];
-        this.score = 0;
+        //this.score = 0;
         this.teamPlayersValue = 0;
     }
 
-    wannaBePlayer(player, playerPrice, playerId) {
+    wannaBePlayer(player, playerPrice) {
         this.playersList.push({
             name: player,
             price: playerPrice,
-            //idPl: playerId,
         })
         console.log(this.playersList);
     }
 
-    createTeam(team, playersCount) {
+    createTeam(team) {
         this.teamsList.push({
             name: team,
             list: [],
-            //count: playersCount,
         });
         console.log(`A "${team}" just entered a game!`);
     }
 
     buyPlayer(teamId, playerId) {
-        //console.log(teamId, plyerId);
-        this.teamsList[teamId-1].list.push(playerId);
-        console.log(`"${this.teamsList[teamId - 1].name}" team just acquired new player ${this.playersList[playerId - 1].name} for ${this.playersList[playerId - 1].price} cash/year!`);
+        //console.log(teamId, playerId);
+        const team = this.teamsList[teamId -1];
+        const teamPlayers = team.list;
+        //console.log(teamPlayers, playerId);
+            if (teamPlayers.includes(playerId)) {
+                console.log(`"${team.name}" team can't add the same player twice!`);  
+                return;
+            } else if (teamPlayers.length >= 3) {
+                console.log(`"${team.name}" team can't add extra players to it's team.\nMaximum players per team is 3.`);
+                return;
+            } else { 
+                    teamPlayers.push(playerId);
+            }
+        console.log(`"${team.name}" team just acquired new player ${this.playersList[playerId - 1].name} for ${this.playersList[playerId - 1].price} cash/year!`);
         //this.teamPlayersValue += this.playersList[playerId - 1].price;
-        //console.log(this.teamPlayersValue);
+        //console.log(this.teamPlayersValue);*/
     }
 
     teamValue(Id) {
@@ -40,20 +49,20 @@ class Basketball {
             totalValue += this.playersList[playerID-1].price;
             //console.log(playerID);
             //console.log(totalValue);
-            //console.log(`${this.teamsList[teamId - 1].name} team is paying ${this.teamPlayersValue} cash/year for it's players.`);
         }
-
-            console.log(`${this.teamsList[Id - 1].name} team is paying ${totalValue} cash/year for it's players.`);
-        }
-
-
-
-    letsPlay() {
-
+        console.log(`${this.teamsList[Id - 1].name} team is paying ${totalValue} cash/year for it's players.`);
     }
 
-    score() {
+    letsPlay(Id) {
+        console.log(`New game everybody!\n"${this.teamsList[Id - 1].name}" vs. "${this.teamsList[Id].name}"`);
+    }
 
+    score(a, b) {
+        if (a > b){
+            console.log(`"${this.teamsList[0].name}" wins!"`);
+        } else {
+            console.log(`"${this.teamsList[1].name}" wins!"`);
+        }
     }
 
     seasonSummary() {
