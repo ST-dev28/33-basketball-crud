@@ -3,8 +3,9 @@ class Basketball {
         this.teamName = teamName;
         this.playersList = [];
         this.teamsList = [];
-        //this.score = 0;
-        this.teamPlayersValue = 0;
+        this.playingTeams = [0, 0];
+        this.gamesPlayed = 0;
+        //this.teamPlayersValue = 0;
     }
 
     wannaBePlayer(player, playerPrice) {
@@ -19,6 +20,7 @@ class Basketball {
         this.teamsList.push({
             name: team,
             list: [],
+            wins: 0,
         });
         console.log(`A "${team}" just entered a game!`);
     }
@@ -54,29 +56,34 @@ class Basketball {
     }
 
     letsPlay(id1, id2) {
-
-        if (id1 < id2 &&
-            id1-1 === 0 ) {
+        this.playingTeams =[id1, id2];
+        this.gamesPlayed++;
         console.log(`New game everybody!\n"${this.teamsList[id1-1].name}" vs. "${this.teamsList[id2-1].name}"`);
-        }
-        if (id1 > id2 &&
-            id1-1 === 1) {
-            console.log(`New game everybody!\n"${this.teamsList[id1-1].name}" vs. "${this.teamsList[id2-1].name}"`);
-        }
     }
 
     score(a, b) {
 
         if (a > b) {
-            console.log(`"${this.teamsList[0].name}" wins!"`);
-        } if (a < b) {
-            console.log(`"${this.teamsList[1].name}" wins!"`);
+            const teamID = this.playingTeams[0];
+            this.teamsList[teamID -1].wins++;
+            console.log(`"${this.teamsList[teamID -1].name}" wins!"`);
+        } 
+        if (a < b) {
+            const teamID = this.playingTeams[1];
+            this.teamsList[teamID -1].wins++;
+            console.log(`"${this.teamsList[teamID -1].name}" wins!"`);
         }
     }
 
     seasonSummary() {
+    console.log(`Season summary for "${this.teamName}" 3x3 league:`);
+    console.log('###############');
+    console.log(`Total games played: ${this.gamesPlayed}`);
 
-    }
+        console.log('###############');
+        }
+    //console.log(this);
+    }   
 
 }
 
