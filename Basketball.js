@@ -82,16 +82,15 @@ class Basketball {
     let win = '';
     for (let i = 0; i < this.teamsList.length; i++ ) {
         win += this.teamsList[i].wins;
-        if (this.teamsList[0].wins > this.teamsList[1].wins){
-            console.log(`Winner team: "${this.teamsList[0].name}"`);
-        } else {
-            console.log(`Winner team: "${this.teamsList[1].name}"`);
-        }
-        console.log('###############');
-        }
-    //console.log(this);
-    }   
+            if (this.teamsList[0].wins > this.teamsList[1].wins){
+                console.log(`Winner team: "${this.teamsList[0].name}"`);
+            } else {
+                console.log(`Winner team: "${this.teamsList[1].name}"`);
+                console.log('###############');
+            }
+        }   
 
+    }
 }
 
 module.exports = Basketball;
