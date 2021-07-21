@@ -53,14 +53,23 @@ class Basketball {
         console.log(`${this.teamsList[Id - 1].name} team is paying ${totalValue} cash/year for it's players.`);
     }
 
-    letsPlay(Id) {
-        console.log(`New game everybody!\n"${this.teamsList[Id - 1].name}" vs. "${this.teamsList[Id].name}"`);
+    letsPlay(id1, id2) {
+
+        if (id1 < id2 &&
+            id1-1 === 0 ) {
+        console.log(`New game everybody!\n"${this.teamsList[id1-1].name}" vs. "${this.teamsList[id2-1].name}"`);
+        }
+        if (id1 > id2 &&
+            id1-1 === 1) {
+            console.log(`New game everybody!\n"${this.teamsList[id1-1].name}" vs. "${this.teamsList[id2-1].name}"`);
+        }
     }
 
     score(a, b) {
-        if (a > b){
+
+        if (a > b) {
             console.log(`"${this.teamsList[0].name}" wins!"`);
-        } else {
+        } if (a < b) {
             console.log(`"${this.teamsList[1].name}" wins!"`);
         }
     }
