@@ -62,34 +62,31 @@ class Basketball {
     }
 
     score(a, b) {
-
+        let teamIndex = 0;
         if (a > b) {
-            const teamID = this.playingTeams[0];
-            this.teamsList[teamID -1].wins++;
-            console.log(`"${this.teamsList[teamID -1].name}" wins!"`);
-        } 
-        if (a < b) {
-            const teamID = this.playingTeams[1];
-            this.teamsList[teamID -1].wins++;
-            console.log(`"${this.teamsList[teamID -1].name}" wins!"`);
+            teamIndex = this.playingTeams[0] - 1;
+        } else {
+            teamIndex = this.playingTeams[1] - 1;
         }
+        const team = this.teamsList[teamIndex];
+        team.winsCount++
+        console.log(`***${team.name}" wins!`);
     }
 
     seasonSummary() {
     console.log(`Season summary for "${this.teamName}" 3x3 league:`);
     console.log('###############');
     console.log(`Total games played: ${this.gamesPlayed}`);
-    let win = '';
-    for (let i = 0; i < this.teamsList.length; i++ ) {
-        win += this.teamsList[i].wins;
-            if (this.teamsList[0].wins > this.teamsList[1].wins){
-                console.log(`Winner team: "${this.teamsList[0].name}"`);
-            } else {
-                console.log(`Winner team: "${this.teamsList[1].name}"`);
-                console.log('###############');
-            }
-        }   
-
+    let wins = 0;         // kiek viso laimejimu per komanda
+    let winner = ''; 
+    for (const team of this.teamsList) {
+        if (this.winsCount > wins) {
+            wins = this.winsCount;
+            winner = team.name;
+        }
+    }
+    console.log(`Winner team: "${winner} "`);
+    console.log(`####################`);
     }
 }
 
