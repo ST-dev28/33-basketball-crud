@@ -1,4 +1,5 @@
-const Basketball = require('./Basketball');
+//const Basketball = require('./Basketball');
+const Basketball = require('./Basketball1');
 
 // Game league name, max players per team
 const game = new Basketball('Bun land', 3);
